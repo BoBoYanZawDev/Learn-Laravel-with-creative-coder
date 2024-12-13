@@ -22,6 +22,7 @@ class AdminProductController extends Controller
             $product = new Product();
             $product->name = Request('name');
             $product->price = Request('price');
+            $product->category_id = Request('category_id');
             $product->description = Request('description');
             $product->save();
             return redirect('/admin/products');

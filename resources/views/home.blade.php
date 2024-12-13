@@ -28,7 +28,7 @@
           <div>
             @foreach($categories as $category)
             <div class="flex items-center cursor-pointer gap-2 py-3 px-2 border-t-[1px] border-t-black/10">
-              <p class="text-sm hover:text-primary transition-all">{{$category->name}}</p>
+              <a href="/categories/{{$category->id}}" class="text-sm hover:text-primary transition-all">{{$category->name}}</a>
             </div>
             @endforeach
           </div>

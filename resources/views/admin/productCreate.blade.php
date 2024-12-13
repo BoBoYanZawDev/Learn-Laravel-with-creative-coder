@@ -38,10 +38,11 @@
                 <div class="flex flex-col">
                   <label class="font-semibold text-sm">Category</label>
                   <select
+                   name="category_id"
                     class="w-full border-[1px] mt-2 px-3 border-black/20 focus:border-primary transition-all py-3 rounded-lg"
                   >
                   @foreach($categories as $category)
-                    <option >{{$category->name}}</option>
+                    <option value="{{$category->id}}">{{$category->name}}</option>
                   @endforeach
                   </select>
                 </div>

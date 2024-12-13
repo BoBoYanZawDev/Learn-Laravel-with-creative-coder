@@ -15,20 +15,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $clothes = Category::factory([
+        $clothes = Category::factory()->create([
             'name' => 'clothes'
         ]);
-        dd($clothes);
-        $electronics = Category::factory([
+        $electronic  = Category::factory()->create([
             'name' => 'electronics'
         ]);
-
-       Product::factory()->create([
-        dd($clothes)
-         
-       ]);
-       Category::factory()->create([
-            'name' => "clothes"
-       ]);
+        Product::factory(20)->create([
+            'category_id' => $clothes->id
+        ]);
+        Product::factory(20)->create([
+            'category_id' => $electronic->id
+        ]);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +12,8 @@ Route::get('/admin/products', [AdminProductController::class, 'index']);
 Route::get('/admin/products/create', [AdminProductController::class, 'create']);
 Route::post('/admin/products/productCreate', [AdminProductController::class, 'createProduct']);
 Route::post('/admin/products/{product}/delete', [AdminProductController::class, 'delete']);
+
+Route::get("/categories/{category}",[CategoryController::class, 'ProductCategory']);
 
 Route::get('/login', function () {
     return view('login');
