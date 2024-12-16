@@ -19,6 +19,10 @@
               d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5A6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14" />
           </svg>
           <form action="">
+            @if(request('category'))
+            <input type="hidden" class="w-full p-0 pl-2 border-none bg-transparent outline-none focus:ring-0"
+              placeholder="Search for products" name="category" value="{{request('category')}}"/>
+            @endif
             <input type="text" class="w-full p-0 pl-2 border-none bg-transparent outline-none focus:ring-0"
               placeholder="Search for products" name="search" value="{{request('search')}}"/>
           </form>
@@ -28,7 +32,7 @@
           <div>
             @foreach($categories as $category)
             <div class="flex items-center cursor-pointer gap-2 py-3 px-2 border-t-[1px] border-t-black/10">
-              <a href="/categories/{{$category->id}}" class="text-sm hover:text-primary transition-all">{{$category->name}}</a>
+              <a href="/?category={{$category->id}}{{request('search') ? '&search='.request('search') : ''}}" class="text-sm hover:text-primary transition-all">{{$category->name}}</a>
             </div>
             @endforeach
           </div>

@@ -10,7 +10,11 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::where('name', 'LIKE', '%' . request('search') . '%')->latest()->paginate(12);
+        // search ,category filter for home page
+        $products = Product::filter()
+        ->paginate(12);
+        
+        
         $categories = Category::all();
         return view('home', [
             'products' => $products,
@@ -25,4 +29,6 @@ class ProductController extends Controller
             'latestProducts'=>$latestProducts
         ]);
     }
+
+    
 }
