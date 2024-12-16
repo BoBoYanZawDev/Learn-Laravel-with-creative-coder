@@ -13,7 +13,6 @@ Route::get('/admin/products/create', [AdminProductController::class, 'create']);
 Route::post('/admin/products/productCreate', [AdminProductController::class, 'createProduct']);
 Route::post('/admin/products/{product}/delete', [AdminProductController::class, 'delete']);
 
-Route::get("/categories/{category}",[CategoryController::class, 'ProductCategory']);
 
 Route::get('/login', function () {
     return view('login');

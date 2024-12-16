@@ -13,4 +13,14 @@ class Product extends Model
     public function category(){
         return  $this->belongsTo(Category::class);
     }
+
+    public function scopeFilter($query){
+        $query->where('name', 'LIKE', '%' . request('search') . '%')
+        ->when(request('category') , function ($query) {
+            $query->whereHas('category' ,function($query){
+                return $query->where('id', request('category'));
+            });
+        })
+        ->latest();
+    }
 }
