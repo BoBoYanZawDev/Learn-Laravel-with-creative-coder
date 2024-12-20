@@ -11,24 +11,21 @@ class ProductController extends Controller
     public function index()
     {
         // search ,category filter for home page
-        $products = Product::filter()
-        ->paginate(12);
-        
-        
+        // ['category'=>request('category'),'search'=> request('search')] <- request(['category',['search'])
+        $products = Product::filter(request(['category','search']))->paginate(12);
         $categories = Category::all();
         return view('home', [
             'products' => $products,
             'categories' => $categories
         ]);
     }
-    
-    public function detail(Product $product) {
-        $latestProducts = Product::orderBy('created_at','desc')->take(3)->get();
-        return view('productDetail',[
-            'product'=> $product,
-            'latestProducts'=>$latestProducts
+
+    public function detail(Product $product)
+    {
+        $latestProducts = Product::orderBy('created_at', 'desc')->take(3)->get();
+        return view('productDetail', [
+            'product' => $product,
+            'latestProducts' => $latestProducts
         ]);
     }
-
-    
 }
