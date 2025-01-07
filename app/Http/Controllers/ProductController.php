@@ -12,7 +12,7 @@ class ProductController extends Controller
     {
         // search ,category filter for home page
         // ['category'=>request('category'),'search'=> request('search')] <- request(['category',['search'])
-        $products = Product::filter(request(['category','search']))->paginate(12);
+        $products = Product::filter(request(['category','search']))->paginate(12)->withQueryString();
         $categories = Category::all();
         return view('home', [
             'products' => $products,
