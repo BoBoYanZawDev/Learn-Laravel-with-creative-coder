@@ -78,7 +78,7 @@
                       </td>
                       <td class="px-6 py-4">
                         <div class="space-x-3 flex items-center min-w-[200px] w-auto max-w-[500px]">
-                          <a href=""
+                          <a href="/admin/products/{{$product->id}}/edit"
                             class="text-sm px-4 flex items-center gap-3 shadow-md py-3 text-white bg-primary hover:bg-blue-900 font-semibold rounded-md transition-all active:animate-press">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                               <path fill="currentColor"

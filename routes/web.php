@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
@@ -10,8 +11,17 @@ Route::get('/products/{product}', [ProductController::class,'detail']);
 
 Route::get('/admin/products', [AdminProductController::class, 'index']);
 Route::get('/admin/products/create', [AdminProductController::class, 'create']);
-Route::post('/admin/products/productCreate', [AdminProductController::class, 'createProduct']);
+Route::post('/admin/products/store', [AdminProductController::class, 'createProduct']);
 Route::post('/admin/products/{product}/delete', [AdminProductController::class, 'delete']);
+Route::get('/admin/products/{product}/edit', [AdminProductController::class, 'edit']);
+Route::post('/admin/products/{product}/update', [AdminProductController::class, 'update']);
+
+Route::get('/admin/categories', [AdminCategoryController::class, 'index']);
+Route::get('/admin/categories/create', [AdminCategoryController::class, 'create']);
+Route::post('/admin/categories/store', [AdminCategoryController::class, 'store']);
+Route::post('/admin/categories/{category}/destory', [AdminCategoryController::class, 'destory']);
+Route::get('/admin/categories/{category}/edit', [AdminCategoryController::class, 'edit']);
+Route::post('/admin/categories/{category}/update', [AdminCategoryController::class, 'update']);
 
 
 Route::get('/login', function () {
