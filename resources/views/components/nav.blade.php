@@ -31,6 +31,7 @@
           <p>Your Cart</p>
         </div>
         <!-- <UserDropDown  /> -->
+         @if(!auth()->check())
         <div v-else class="md:flex hidden items-center gap-3">
           <a
             href="/login"
@@ -45,5 +46,13 @@
             Register
           </a>
         </div>
+        @else
+        <div class="text-white bg-primary px-2 py-1 rounded-xl">
+          {{auth()->user()->name}}
+        </div>
+        <form action="/logout" method="POST">
+          <button type="submit" class="bg-red-500 px-2 py-1 rounded-lg text-white">Logout</button>
+        </form>
+        @endif
       </div>
     </div>

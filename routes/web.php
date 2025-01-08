@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminProductController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProductController::class ,'index']);
+Route::get('/register', [AuthController::class ,'create']);
+Route::post('/register', [AuthController::class ,'store']);
+Route::post('/logout', [AuthController::class ,'destory']);
 Route::get('/products/{product}', [ProductController::class,'detail']);
 
 Route::get('/admin/products', [AdminProductController::class, 'index']);
@@ -26,10 +29,6 @@ Route::post('/admin/categories/{category}/update', [AdminCategoryController::cla
 
 Route::get('/login', function () {
     return view('login');
-});
-
-Route::get('/register', function () {
-    return view('register');
 });
 
 Route::get('/checkout', function () {
