@@ -51,6 +51,7 @@
           {{auth()->user()->name}}
         </div>
         <form action="/logout" method="POST">
+          @csrf
           <button type="submit" class="bg-red-500 px-2 py-1 rounded-lg text-white">Logout</button>
         </form>
         @endif

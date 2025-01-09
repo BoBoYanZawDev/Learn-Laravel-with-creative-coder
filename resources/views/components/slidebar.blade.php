@@ -12,6 +12,9 @@
             </div>
           </a>
         </div>
+        <div class="text-white bg-primary px-2 py-1 rounded-xl my-3 mx-2 text-center">
+          {{auth()->user()->name}}
+        </div>
         <!-- Sidebar Header -->
         <div
           class="flex flex-col overflow-y-auto scroll duration-300 ease-linear"
@@ -76,11 +79,10 @@
             </nav>
           </div>
         </div>
-        <div
-          class="w-full px-3 font-roboto transition-all duration-150 absolute left-0 bottom-2 bg-secondary"
-        >
-          <a
-            class="font-bold text-md rounded-[4px] flex h-[48px] items-center cursor-pointer mb-1 pl-3 bg-[#BE1700]"
+        <form action="/logout" method="POST" class="w-full px-3 font-roboto transition-all duration-150 absolute left-0 bottom-2 bg-secondary">
+          @csrf
+          <button type="submit"
+            class="font-bold text-md rounded-[4px] flex h-[48px] items-center cursor-pointer mb-1 pl-3 bg-[#BE1700] w-full"
           >
             <svg
               width="22"
@@ -99,6 +101,6 @@
               />
             </svg>
             Logout
-          </a>
-        </div>
+          </button>
+        </form>
       </aside>

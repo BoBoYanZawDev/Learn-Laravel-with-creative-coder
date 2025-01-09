@@ -10,22 +10,32 @@
           </h1>
           <div class="w-[10px] h-[10px] bg-primary rounded-full"></div>
         </div>
-        <form class="flex flex-col gap-5">
+        <form class="flex flex-col gap-5" action="/login" method="POST">
+          @csrf
           <div class="flex flex-col">
             <label class="font-semibold text-sm">Email</label>
             <input
+            name="email"
+            value="{{old('email')}}"
               class="outline-none px-4 focus:ring-0 border-[1px] border-black/10 py-4 rounded-lg focus:border-primary transition-all mt-2"
               type="text"
               placeholder="Enter your Email"
             />
+            @error('email')
+          <p class="text-red-500 my-3 text-sm">{{$message}}</p>
+          @enderror
           </div>
           <div class="flex flex-col">
             <label class="font-semibold text-sm">Password</label>
             <input
+              name="password"
               class="outline-none px-4 focus:ring-0 border-[1px] border-black/10 py-4 rounded-lg focus:border-primary transition-all mt-2"
               type="password"
               placeholder="Enter your password"
             />
+            @error('password')
+          <p class="text-red-500 my-3 text-sm">{{$message}}</p>
+          @enderror
           </div>
           <button
             type="submit"
