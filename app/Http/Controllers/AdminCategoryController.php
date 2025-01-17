@@ -36,8 +36,13 @@ class AdminCategoryController extends Controller
         return redirect('/admin/categories');
     }
     // Delete category
-    public function destory(Category $category){
-        $category->delete();
+    public function destroy(Category $category){
+        try{
+            $category->delete();
         return redirect('/admin/categories');
+        }catch(\Exception $e){
+            return redirect('/admin/categories')->with('error','Category cannot be deleted');
+        }
+        
     }
 }

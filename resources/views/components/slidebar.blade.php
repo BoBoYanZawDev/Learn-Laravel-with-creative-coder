@@ -32,7 +32,7 @@
                     class="w-full rounded-[4px] transition-all duration-150 mb-3 hover:bg-primary"
                   >
                     <a
-                      href="/admin/products"
+                      href={{route('products.index')}}
                       class="relative flex items-center gap-2.5 rounded-sm py-3 px-4 font-semibold text-sm duration-300 ease-in-out"
                     >
                       <svg
@@ -56,7 +56,7 @@
                     class="w-full rounded-[4px] transition-all duration-150 mb-3 hover:bg-primary"
                   >
                     <a
-                      href="/admin/categories"
+                      href="{{route('categories.index')}}"
                       class="relative flex items-center gap-2.5 rounded-sm py-3 px-4 font-semibold text-sm duration-300 ease-in-out"
                     >
                       <svg

@@ -23,9 +23,11 @@ class ProductController extends Controller
     public function detail(Product $product)
     {
         $latestProducts = Product::orderBy('created_at', 'desc')->take(3)->get();
+        $relatedProducts = Product::where('category_id',$product->category_id)->inRandomOrder()->take(3)->get();
         return view('productDetail', [
             'product' => $product,
-            'latestProducts' => $latestProducts
+            'latestProducts' => $latestProducts,
+            'relatedProducts' => $relatedProducts
         ]);
     }
 }

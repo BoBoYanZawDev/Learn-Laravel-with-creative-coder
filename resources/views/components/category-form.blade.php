@@ -9,8 +9,11 @@
       <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 bg-gray-50">
         <div class="border p-10 bg-white rounded-md">
           <h1 class="font-bold my-3 text-3xl">Category {{$type === 'create' ? 'Create':'Edit'}}</h1>
-          <form class="space-y-4 md:space-y-6" method="post" action="{{$type === 'create' ? ' /admin/categories/store':'/admin/categories/'.$category->id.'/update'}}">
+          <form class="space-y-4 md:space-y-6" method="post" action="{{$type === 'create' ?  route('categories.store'): route('categories.update',$category->id)}}">
             @csrf
+            @if($type === 'edit')
+            @method('PUT')
+            @endif
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div class="flex flex-col">
                 <label class="font-semibold text-sm">Category Name</label>
@@ -26,7 +29,7 @@
               </div>
               <div class="flex items-center justify-end space-x-5">
                 <a
-                  href="/admin/categories"
+                  href={{route('categories.index')}}
                   class="text-sm px-4 bg-gray-600 hover:bg-gray-700 text-white flex items-center gap-3 shadow-md py-3 font-semibold rounded-md transition-all active:animate-press">
                   Cancel
                 </a>

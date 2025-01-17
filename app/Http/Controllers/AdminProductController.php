@@ -25,7 +25,7 @@ class AdminProductController extends Controller
              'product'=> $product
            ] );
     }
-    public function createProduct(ProductRequest $request) {
+    public function store(ProductRequest $request) {
             $product = new Product();
             $product->name = $request->name;
             $product->price = $request->price;
@@ -42,7 +42,7 @@ class AdminProductController extends Controller
             $product->save();
             return redirect('/admin/products');
     }
-    public function delete(Product $product) {
+    public function destroy(Product $product) {
         $product->delete();
         return redirect('/admin/products');
     }

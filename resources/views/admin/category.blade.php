@@ -7,7 +7,7 @@
           <div class="relative border border-gray-300 bg-white rounded-md shadow-sm shadow-gray-200 px-5 py-3">
             <div class="flex justify-end mb-3">
               <a class="text-sm px-4 flex items-center gap-3 shadow-md py-3 text-white bg-primary hover:bg-blue-900 font-semibold rounded-md transition-all active:animate-press"
-                href="/admin/categories/create">
+                href="{{route('categories.create')}}">
                 Create
               </a>
             </div>
@@ -38,7 +38,7 @@
                       </td>
                       <td class="px-6 py-4 min-w-[150px]">
                         <span class="text-darkGray p-1.5 font-semibold block">
-                        {{$category->name}}
+                          {{$category->name}}
                         </span>
                       </td>
                       <td class="px-6 py-4">
@@ -51,18 +51,19 @@
                             </svg>
                             Edit
                           </a>
-                          <form action="/admin/categories/{{$category->id}}/destory" method="post">
+                          <form action={{route('categories.destroy',$category->id)}} method="post">
                             @csrf
-                          <button type="submit"
-                            class="text-sm px-4 flex items-center gap-3 shadow-md py-3 text-white bg-red-500 hover:bg-blue-900 font-semibold rounded-md transition-all active:animate-press">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                              <path fill="currentColor"
-                                d="M5 21V6H4V4h5V3h6v1h5v2h-1v15zm2-2h10V6H7zm2-2h2V8H9zm4 0h2V8h-2zM7 6v13z" />
-                            </svg>
-                            Delete
-                          </button>
+                            @method('DELETE')
+                            <button type="submit"
+                              class="text-sm px-4 flex items-center gap-3 shadow-md py-3 text-white bg-red-500 hover:bg-blue-900 font-semibold rounded-md transition-all active:animate-press">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                  d="M5 21V6H4V4h5V3h6v1h5v2h-1v15zm2-2h10V6H7zm2-2h2V8H9zm4 0h2V8h-2zM7 6v13z" />
+                              </svg>
+                              Delete
+                            </button>
                           </form>
-                          
+
                         </div>
                       </td>
                     </tr>
@@ -72,8 +73,13 @@
               </div>
             </div>
             <div class="flex justify-center">
-            {{$categories->links()}}
+              {{$categories->links()}}
             </div>
+            @if(session('error'))
+            <div class="text-red-500 my-3 text-sm">
+              {{ session('error') }}
+            </div>
+            @endif
           </div>
         </div>
       </main>
