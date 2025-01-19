@@ -11,7 +11,7 @@ class Product extends Model
     protected $guarded=[];
 
     public function category(){
-        return  $this->belongsTo(Category::class);
+    return  $this->belongsTo(Category::class);
     }
 
     public function scopeFilter($query ,$fliters){
@@ -25,5 +25,8 @@ class Product extends Model
             });
         })
         ->latest();
+    }
+    public function cartUsers(){
+        return $this->belongsToMany(User::class , 'carts')->withPivot('quantity');
     }
 }

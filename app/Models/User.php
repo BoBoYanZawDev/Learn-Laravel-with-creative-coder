@@ -45,4 +45,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function cartProducts(){
+        return $this->belongsToMany(Product::class , 'carts')->withPivot('quantity');
+    }
 }

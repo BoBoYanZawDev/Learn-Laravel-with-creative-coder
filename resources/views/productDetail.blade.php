@@ -73,7 +73,8 @@
                   name="quantity"
                   class="w-full border-black/10 border-2 rounded-full py-3 pl-5"
                   type="number"
-                  value="1" />
+                  value="1" 
+                  min="1"/>
               </div>
             </div>
             <button
@@ -169,7 +170,8 @@
             </div>
           </div>
           <div class="my-8 h-[1px] w-full bg-black/20"></div>
-          <form action="">
+          <form action="/add-to-cart/{{$product->id}}" method="POST">
+            @csrf
             <div
               class="flex lg:items-center lg:flex-row flex-col gap-3 mt-4 mb-2">
               <div class="lg:basis-[40%]">
@@ -178,7 +180,8 @@
                 name="quantity"
                   class="w-full border-black/10 border-2 rounded-full py-3 pl-5"
                   type="number"
-                  value="1" />
+                  value="1"
+                  min="1" />
               </div>
             </div>
             <button
