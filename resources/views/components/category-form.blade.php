@@ -29,7 +29,7 @@
               </div>
               <div class="flex items-center justify-end space-x-5">
                 <a
-                  href={{route('categories.index')}}
+                  href="{{route('categories.index')}}"
                   class="text-sm px-4 bg-gray-600 hover:bg-gray-700 text-white flex items-center gap-3 shadow-md py-3 font-semibold rounded-md transition-all active:animate-press">
                   Cancel
                 </a>

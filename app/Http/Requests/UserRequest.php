@@ -12,7 +12,7 @@ class UserRequest extends FormRequest
      */
     // public function authorize(): bool
     // {
-    //     return false;
+    //     return true;
     // }
 
     /**
@@ -24,9 +24,10 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => ['required', 'min:3'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->route('user')=== null ? null : $this->route('user')->id)],
             'phone' => ['required', 'numeric'],
-            'password' => ['required', 'min:8','confirmed']
+            'password' => ['required', 'min:8','confirmed'],
+            'is_admin' => ['nullable', 'boolean']
         ];
     }
 }

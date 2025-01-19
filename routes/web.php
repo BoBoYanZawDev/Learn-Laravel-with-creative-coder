@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
@@ -22,6 +23,9 @@ Route::middleware(mustBeAdmin::class)
 
 Route::middleware(mustBeAdmin::class)
     ->resource('/admin/categories',AdminCategoryController::class);
+
+Route::middleware(mustBeAdmin::class)
+    ->resource('/admin/users',AdminUserController::class);
 
 
 Route::get('/checkout', function () {

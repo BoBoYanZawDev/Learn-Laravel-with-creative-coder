@@ -51,7 +51,7 @@
                             </svg>
                             Edit
                           </a>
-                          <form action={{route('categories.destroy',$category->id)}} method="post">
+                          <form action="{{route('categories.destroy',$category->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit"

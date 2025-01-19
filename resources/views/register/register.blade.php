@@ -14,7 +14,7 @@
         <div class="flex flex-col">
           <label class="font-semibold text-sm">Name</label>
           <input
-            value="{{old("name")}}"
+            value="{{old('name')}}"
             name="name"
             class="outline-none px-4 focus:ring-0 border-[1px] border-black/10 py-4 rounded-lg focus:border-primary transition-all mt-2"
             type="text"
@@ -26,7 +26,7 @@
         <div class="flex flex-col">
           <label class="font-semibold text-sm">Email</label>
           <input
-            value="{{old("email")}}"
+            value="{{old('email')}}"
             name="email"
             class="outline-none px-4 focus:ring-0 border-[1px] border-black/10 py-4 rounded-lg focus:border-primary transition-all mt-2"
             type="text"
@@ -38,7 +38,7 @@
         <div class="flex flex-col">
           <label class="font-semibold text-sm">Phone</label>
           <input
-            value="{{old("phone")}}"
+            value="{{old('phone')}}"
             name="phone"
             class="outline-none px-4 focus:ring-0 border-[1px] border-black/10 py-4 rounded-lg focus:border-primary transition-all mt-2"
             type="text"
