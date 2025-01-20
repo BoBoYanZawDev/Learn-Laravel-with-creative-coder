@@ -24,7 +24,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => ['required', 'min:3'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->route('user')=== null ? null : $this->route('user')->id)],
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->route('user'))],
             'phone' => ['required', 'numeric'],
             'password' => ['required', 'min:8','confirmed'],
             'is_admin' => ['nullable', 'boolean']

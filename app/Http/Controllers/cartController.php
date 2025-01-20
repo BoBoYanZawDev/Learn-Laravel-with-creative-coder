@@ -15,7 +15,7 @@ class cartController extends Controller
     {
         $user = auth()->user();
         if($user->cartProducts->contains('id',$product->id)){
-            $user->cartProducts()->updateExistingPivot($product->id, ['quantity' => request('quantity')]);
+            // $user->cartProducts()->updateExistingPivot($product->id, ['quantity' => request('quantity')]);
             return redirect('/products/'.$product->id.'/checkout');
         }else{
             $user->cartProducts()->attach($product->id ,['quantity' => request('quantity')]);

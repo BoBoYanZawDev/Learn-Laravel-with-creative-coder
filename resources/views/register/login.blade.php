@@ -15,8 +15,8 @@
           <div class="flex flex-col">
             <label class="font-semibold text-sm">Email</label>
             <input
-            name="email"
             value="{{old('email')}}"
+            name="email"
               class="outline-none px-4 focus:ring-0 border-[1px] border-black/10 py-4 rounded-lg focus:border-primary transition-all mt-2"
               type="text"
               placeholder="Enter your Email"

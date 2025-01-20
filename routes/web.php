@@ -17,7 +17,7 @@ Route::post('/logout', [AuthController::class ,'destory']);
 Route::get('/login', [AuthController::class ,'loginForm'])->name('login');
 Route::post('/login', [AuthController::class ,'loginStore']);
 Route::get('/products/{product}', [ProductController::class,'detail'])->name('productDetail');
-Route::post('/add-to-cart/{product}',[cartController::class,'addToCart']);
+Route::post('/add-to-cart/{product}',[cartController::class,'addToCart'])->middleware(MustBeLogin::class);
 Route::get('/products/{product}/checkout', [cartController::class,'show'])->middleware(MustBeLogin::class);
 
 
