@@ -21,10 +21,10 @@
           <form action="">
             @if(request('category'))
             <input type="hidden" class="w-full p-0 pl-2 border-none bg-transparent outline-none focus:ring-0"
-              placeholder="Search for products" name="category" value="{{request('category')}}"/>
+              placeholder="Search for products" name="category" value="{{request('category')}}" />
             @endif
             <input type="text" class="w-full p-0 pl-2 border-none bg-transparent outline-none focus:ring-0"
-              placeholder="Search for products" name="search" value="{{request('search')}}"/>
+              placeholder="Search for products" name="search" value="{{request('search')}}" />
           </form>
         </div>
         <div>
@@ -42,16 +42,18 @@
       <!-- Dynamic Section -->
       <div class="lg:w-[75%] md:w-[65%] md:mt-0 mt-10 w-full mb-12 md:pl-[8%]">
         <div class="grid lg:grid-cols-4 md:grid-cols-2 mb-14 gap-x-5 gap-y-10">
-          @foreach($products as $product)
-        <x-card :product="$product" />
-      @endforeach
-    </div>
-    <div class="flex justify-center">
-    {{$products->links()}}
-    </div>
-        <!-- <div class="w-full h-[300px] flex items-center justify-center font-bold font-lg text-black/40">
-                    <p>No Products yet.</p>
-                </div> -->
+          @forelse($products as $product)
+          <x-card :product="$product" />
+          @empty
+          <div class="w-full h-[300px] flex items-center justify-center font-bold font-lg text-black/40">
+            <p>No Products yet.</p>
+          </div>
+          @endforelse
+        </div>
+        <div class="flex justify-center">
+          {{$products->links()}}
+        </div>
+
         <!-- <p ref="observer" v-if="products?.length > 0" class="opacity-0">
             Load More
           </p>

@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminOrdersController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\cartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\mustBeAdmin;
 use App\Http\Middleware\MustBeLogin;
@@ -18,7 +20,14 @@ Route::get('/login', [AuthController::class ,'loginForm'])->name('login');
 Route::post('/login', [AuthController::class ,'loginStore']);
 Route::get('/products/{product}', [ProductController::class,'detail'])->name('productDetail');
 Route::post('/add-to-cart/{product}',[cartController::class,'addToCart'])->middleware(MustBeLogin::class);
-Route::get('/products/{product}/checkout', [cartController::class,'show'])->middleware(MustBeLogin::class);
+
+
+Route::middleware(MustBeLogin::class)
+    ->controller(CheckoutController::class)
+    ->group(function(){
+      Route::get('/checkout', 'index')->name('checkout');
+      Route::delete('/remove-from-cart/{product}','removeFromCart')->name('checkout.destory');
+    });
 
 
 Route::middleware(mustBeAdmin::class)
@@ -30,3 +39,9 @@ Route::middleware(mustBeAdmin::class)
 Route::middleware(mustBeAdmin::class)
     ->resource('/admin/users',AdminUserController::class);
 
+Route::middleware(mustBeAdmin::class)
+    ->prefix('/admin')
+    ->controller(AdminOrdersController::class)
+    ->group(function (){
+        Route::get('/orders','index')->name('admin.orders.index');
+    });

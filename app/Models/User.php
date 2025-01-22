@@ -46,7 +46,29 @@ class User extends Authenticatable
         ];
     }
 
-    public function cartProducts(){
-        return $this->belongsToMany(Product::class , 'carts')->withPivot('quantity');
+    public function cartProducts()
+    {
+        return $this->belongsToMany(Product::class, 'carts')->withPivot('quantity');
+    }
+
+    public function getTotalPrice()
+    {
+        $totalPrice = 0;
+        $productPriceWithQuantity = $this->cartProducts->map(function ($product) {
+            return [
+                'price' => $product->price,
+                'quantity' => $product->pivot->quantity
+            ];
+        });
+        $productPriceWithQuantity->each(function ($product) use (&$totalPrice) {
+            $totalPrice += $product['price'] * $product['quantity'];
+        });
+        return $totalPrice;
+    }
+
+    //a user hasMany Orders
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

@@ -1,9 +1,10 @@
 <x-layout>
-  <div class="flex h-screen overflow-hidden font-roboto">
-    <x-slidebar />
-    <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-      <main>
-        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 bg-gray-50">
+    <div class="flex h-screen overflow-hidden font-roboto">
+        <x-slidebar />
+        <div
+            class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+            <main>
+            <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 bg-gray-50">
           <div class="relative border border-gray-300 bg-white rounded-md shadow-sm shadow-gray-200 px-5 py-3">
             <div class="flex justify-end mb-3">
               <a class="text-sm px-4 flex items-center gap-3 shadow-md py-3 text-white bg-primary hover:bg-blue-900 font-semibold rounded-md transition-all active:animate-press"
@@ -29,11 +30,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($categories as $category)
+                    @foreach($orders as $order)
                     <tr class="border-b">
                       <td class="px-6 py-4">
                         <span class="text-darkGray p-1.5 font-semibold block">
-                          {{$category->id}}
+                          {{$order->id}}
                         </span>
                       </td>
                       <td class="px-6 py-4 min-w-[150px]">
@@ -83,7 +84,7 @@
             @endif
           </div>
         </div>
-      </main>
+            </main>
+        </div>
     </div>
-  </div>
 </x-layout>
