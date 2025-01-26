@@ -19,17 +19,21 @@ Route::post('/logout', [AuthController::class ,'destory']);
 Route::get('/login', [AuthController::class ,'loginForm'])->name('login');
 Route::post('/login', [AuthController::class ,'loginStore']);
 Route::get('/products/{product}', [ProductController::class,'detail'])->name('productDetail');
-Route::post('/add-to-cart/{product}',[cartController::class,'addToCart'])->middleware(MustBeLogin::class);
 
+Route::middleware(MustBeLogin::class)
+    ->controller(cartController::class)
+    ->group(function(){
+      Route::post('/add-to-cart/{product}', 'addToCart')->name('addToCart');
+      Route::delete('/remove-from-cart/{product}','removeFromCart')->name('removeFromCart');
+    });
 
 Route::middleware(MustBeLogin::class)
     ->controller(CheckoutController::class)
     ->group(function(){
       Route::get('/checkout', 'index')->name('checkout');
-      Route::delete('/remove-from-cart/{product}','removeFromCart')->name('checkout.destory');
     });
 
-
+// for Backend
 Route::middleware(mustBeAdmin::class)
     ->resource('/admin/products',AdminProductController::class); 
 

@@ -64,7 +64,7 @@
             </div>
           </div>
           <div class="my-8 h-[1px] w-full bg-black/20"></div>
-          <form action="">
+          <form action="{{route('addToCart',$product->id)}}" method="post">
             <div
               class="flex lg:items-center lg:flex-row flex-col gap-3 mt-4 mb-2">
               <div class="lg:basis-[40%]">
@@ -170,7 +170,7 @@
             </div>
           </div>
           <div class="my-8 h-[1px] w-full bg-black/20"></div>
-          <form action="/add-to-cart/{{$product->id}}" method="POST">
+          <form action="{{route('addToCart',$product->id)}}" method="POST">
             @csrf
             <div
               class="flex lg:items-center lg:flex-row flex-col gap-3 mt-4 mb-2">

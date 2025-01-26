@@ -108,7 +108,7 @@
             <div class="font-bold flex gap-2 shrink-0">
               <p class="text-black/50">x {{$product->pivot->quantity}}</p>
               <p class="">{{$product->price * $product->pivot->quantity}} MMK</p>
-              <form action="{{route('checkout.destory',$product->id)}}" method="post">
+              <form action="{{route('removeFromCart',$product->id)}}" method="post">
                 @method('DELETE')
                 @csrf
                 <button type="submit">

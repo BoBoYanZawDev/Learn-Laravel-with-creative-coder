@@ -14,9 +14,4 @@ class CheckoutController extends Controller
             'totalPrice' => auth()->user()->getTotalPrice()
        ]);
     }
-    public function removeFromCart(Product $product)
-    {
-        auth()->user()->cartProducts()->detach($product->id);
-        return back();
-    }
 }

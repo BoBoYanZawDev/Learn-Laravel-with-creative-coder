@@ -20,4 +20,9 @@ class cartController extends Controller
             return redirect('/checkout');
         }
     }
+    public function removeFromCart(Product $product)
+    {
+        auth()->user()->cartProducts()->detach($product->id);
+        return back();
+    }
 }
