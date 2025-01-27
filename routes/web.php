@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\mustBeAdmin;
 use App\Http\Middleware\MustBeLogin;
@@ -28,9 +29,10 @@ Route::middleware(MustBeLogin::class)
     });
 
 Route::middleware(MustBeLogin::class)
-    ->controller(CheckoutController::class)
     ->group(function(){
-      Route::get('/checkout', 'index')->name('checkout');
+      Route::get('/checkout', [CheckoutController::class,'index'])->name('checkout');
+      Route::post('/orders/store', [OrderController::class,'store'])->name('orders.store');
+      Route::get('/orders/history', [OrderController::class,'userOrdersHistory'])->name('orders.history');
     });
 
 // for Backend

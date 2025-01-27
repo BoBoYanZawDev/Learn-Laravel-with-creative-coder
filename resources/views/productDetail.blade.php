@@ -1,6 +1,5 @@
 <x-layout>
   <x-nav />
-  {{--dd($product)--}}
   <div class="xl:px-32 sm:px-5 px-2">
     <div class="mt-10 flex md:flex-row flex-col xl:gap-10 gap-5">
       <div class="lg:basis-[65%] md:basis-[60%] overflow-hidden">
@@ -65,6 +64,7 @@
           </div>
           <div class="my-8 h-[1px] w-full bg-black/20"></div>
           <form action="{{route('addToCart',$product->id)}}" method="post">
+            @csrf
             <div
               class="flex lg:items-center lg:flex-row flex-col gap-3 mt-4 mb-2">
               <div class="lg:basis-[40%]">
