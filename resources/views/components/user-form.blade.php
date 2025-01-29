@@ -15,6 +15,11 @@
                         @if($type === 'edit')
                         @method('PUT')
                         @endif
+                        <div class="">
+                            <div class="image-wrapper">
+                                <input type="file" accept="image/*" name="profile"/>
+                            </div>
+                        </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div class="flex flex-col ps-2">
                                 <label class="font-semibold text-sm">User Name</label>
@@ -34,7 +39,7 @@
                                     name="is_admin"
                                     class="w-full border-[1px] mt-2 px-3 border-black/20 focus:border-primary transition-all py-3 rounded-lg">
                                     <option value="0" {{$type === 'edit' ? 0 === old('is_admin',$user->is_admin) ? 'selected' : '': ''}}>User</option>
-                                    <option value="1"{{$type === 'edit' ? 1 === old('is_admin',$user->is_admin) ? 'selected' : '': ''}}>Admin</option>
+                                    <option value="1" {{$type === 'edit' ? 1 === old('is_admin',$user->is_admin) ? 'selected' : '': ''}}>Admin</option>
                                 </select>
                             </div>
                             <div class="flex flex-col">
@@ -64,7 +69,7 @@
                             <div class="flex flex-col {{$type === 'edit' ? 'hidden':''}}">
                                 <label class="font-semibold text-sm">Password</label>
                                 <input
-                                value="{{old('password_confirmation',$user->password)}}"
+                                    value="{{old('password_confirmation',$user->password)}}"
                                     class="outline-none px-4 focus:ring-0 border-[1px] border-black/10 py-4 rounded-lg focus:border-primary transition-all mt-2"
                                     type="password"
                                     placeholder="Enter User Password"

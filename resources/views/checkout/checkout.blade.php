@@ -47,7 +47,7 @@
             </div> -->
           <div class="md:col-span-2 flex flex-col justify-center">
             <label class="font-semibold text-sm">Paid ScreenShot</label>
-            <input type="file" name="screenshot" />
+            <input type="file" accept="image/*" name="screenshot" />
             @error('screenshot')
         <p class="text-red-500 my-3 text-sm">{{$message}}</p>
       @enderror

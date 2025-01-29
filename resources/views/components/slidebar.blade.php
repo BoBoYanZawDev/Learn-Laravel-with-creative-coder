@@ -2,7 +2,7 @@
   ref="target"
   class="absolute left-0 top-0 z-[9999] flex h-screen w-[270px] flex-col overflow-y-hidden text-white bg-secondary duration-300 ease-linear lg:static transition-all lg:translate-x-0">
   <div class="flex items-center justify-between gap-2 py-5.5 lg:py-6.5">
-    <a href="/admin/products" class="block w-full">
+    <a href="{{route('admin.orders.index')}}" class="block w-full">
       <div
         class="py-[1rem] border-b border-b-gray-300 px-6 w-full flex items-center space-x-3">
         <img src="/assets/logo.png" alt="logo" class="w-[80px]" />
@@ -10,8 +10,9 @@
       </div>
     </a>
   </div>
-  <div class="text-white bg-primary px-2 py-1 rounded-xl my-3 mx-2 text-center">
+  <div class="text-white bg-primary px-5 py-3 rounded-xl my-3 mx-2 text-center flex items-center justify-between">
     {{auth()->user()->name}}
+    <a href="/"><svg height="23" viewBox="0 0 512 512" width="23" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="m503.871094 231.433594-236.800782-226.984375c-6.183593-5.933594-15.957031-5.933594-22.140624 0l-237.035157 227.21875c-5.015625 5.015625-7.894531 11.925781-7.894531 18.988281 0 14.699219 11.96875 26.667969 26.667969 26.667969h37.332031v202.664062c0 17.664063 14.335938 32 32 32h90.667969c8.832031 0 16-7.167969 16-16v-138.664062c0-2.925781 2.386719-5.335938 5.332031-5.335938h96c2.921875 0 5.332031 2.410157 5.332031 5.335938v138.664062c0 8.832031 7.167969 16 16 16h90.667969c17.664062 0 32-14.335937 32-32v-202.664062h37.332031c14.699219 0 26.667969-11.96875 26.667969-26.667969 0-7.0625-2.878906-13.972656-8.128906-19.222656zm0 0"/></svg></a>
   </div>
   <!-- Sidebar Header -->
   <div

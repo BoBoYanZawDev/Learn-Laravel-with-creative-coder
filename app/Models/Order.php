@@ -9,6 +9,16 @@ class Order extends Model
 {
     /** @use HasFactory<\Database\Factories\OrderFactory> */
     use HasFactory;
+    protected $guarded=[];
+    const STATUS_PENDING = 'pending';
+    const STATUS_FINISHED = 'finished';
+    const STATUS_CANCELED = 'canceled';
+
+    // public function getStatusAttribute($value)
+    // {
+    //     return $value;
+    // }
+
     // Order belongs to a user
     public function user()
     {

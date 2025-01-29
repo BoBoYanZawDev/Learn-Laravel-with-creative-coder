@@ -50,4 +50,6 @@ Route::middleware(mustBeAdmin::class)
     ->controller(AdminOrdersController::class)
     ->group(function (){
         Route::get('/orders','index')->name('admin.orders.index');
+        Route::post('/orders/{order}/finish','markAsFinished')->name('admin.orders.finish');
+        Route::post('/orders/{order}/cancel','markAsCanceled')->name('admin.orders.cancel');
     });

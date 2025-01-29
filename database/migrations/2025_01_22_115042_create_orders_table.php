@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('address');
             $table->text('notes');
             $table->string('screenshot');
+            $table->string('status')->default('pending'); 
             $table->timestamps();
         });
     }

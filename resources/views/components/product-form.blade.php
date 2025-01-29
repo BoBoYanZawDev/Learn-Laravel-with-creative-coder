@@ -18,7 +18,7 @@
             @endif
             <div class="">
               <div class="image-wrapper">
-                <input type="file" />
+                <input type="file" accept="image/*" name="product_img"/>
               </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">

@@ -12,7 +12,7 @@ class OrderController extends Controller
             'name' => "required",
             'phone' => "required",
             'shopping_address' => "required",
-            'screenshot' => "required",
+            'screenshot' => ["required",'image'],
             'notes' => "required",
         ]);
 
