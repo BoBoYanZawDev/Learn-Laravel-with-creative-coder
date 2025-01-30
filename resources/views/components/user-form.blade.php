@@ -10,14 +10,14 @@
             <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 bg-gray-50">
                 <div class="border p-10 bg-white rounded-md">
                     <h1 class="font-bold my-3 text-3xl">User {{$type === 'create' ? 'Create':'Edit' }}</h1>
-                    <form class="space-y-4 md:space-y-6" method="post" action="{{$type === 'create' ? route('users.store'):route('users.update',$user->id)}}">
+                    <form class="space-y-4 md:space-y-6" method="post" action="{{$type === 'create' ? route('users.store'):route('users.update',$user->id)}}" enctype="multipart/form-data">
                         @csrf
                         @if($type === 'edit')
                         @method('PUT')
                         @endif
                         <div class="">
                             <div class="image-wrapper">
-                                <input type="file" accept="image/*" name="profile"/>
+                                <input type="file" accept="image/*" name="profile_img"/>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">

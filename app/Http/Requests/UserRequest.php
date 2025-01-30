@@ -25,9 +25,10 @@ class UserRequest extends FormRequest
         return [
             'name' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->route('user'))],
-            'phone' => ['required', 'numeric'],
+            'phone' => ['required', 'regex:/^(09|\+?959)[0-9]{7,10}$/'],
             'password' => ['required', 'min:8','confirmed'],
-            'is_admin' => ['nullable', 'boolean']
+            'is_admin' => ['nullable', 'boolean'],
+            'profile_img' => ['nullable']
         ];
     }
 }

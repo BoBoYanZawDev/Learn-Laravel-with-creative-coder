@@ -11,14 +11,25 @@
       <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 bg-gray-50">
         <div class="border p-10 bg-white rounded-md">
           <h1 class="font-bold my-3 text-3xl">Product {{$type === 'create' ? 'Create':'Edit' }}</h1>
-          <form class="space-y-4 md:space-y-6" method="post" action="{{$type === 'create' ? route('products.store'):route('products.update',$product->id)}}">
+          <form class="space-y-4 md:space-y-6" method="post" action="{{$type === 'create' ? route('products.store'):route('products.update',$product->id)}}" enctype="multipart/form-data">
             @csrf
             @if($type === 'edit')
             @method('PUT')
             @endif
             <div class="">
               <div class="image-wrapper">
-                <input type="file" accept="image/*" name="product_img"/>
+              @if($type === 'edit')
+                <span class="text-darkGray p-1.5 font-semibold block">
+                          <img
+                            src="{{$product->product_img}}"
+                            alt="Product Image" class="w-16 h-16 object-cover" />
+                </span>
+                @endif
+                <input type="file" accept="image/*" name="product_img" />
+              
+                @error('product_img')
+                <p class="text-red-500 my-3 text-sm">{{$message}}</p>
+                @enderror
               </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">

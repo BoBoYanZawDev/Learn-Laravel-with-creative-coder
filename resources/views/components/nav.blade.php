@@ -24,8 +24,7 @@
       </a>
     </div>
     @else
-
-    @if(auth()->user()->profile_img != '-')
+    @if(auth()->user()->profile_img == null)
     <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 cursor-pointer ms-2 me-5" src="{{asset('assets/user.png')}}" alt="User dropdown">
     @else
     <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500 cursor-pointer ms-2 me-5" src="{{asset(auth()->user()->profile_img)}}" alt="User dropdown">

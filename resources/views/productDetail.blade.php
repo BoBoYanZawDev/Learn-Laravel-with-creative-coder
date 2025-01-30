@@ -4,7 +4,7 @@
     <div class="mt-10 flex md:flex-row flex-col xl:gap-10 gap-5">
       <div class="lg:basis-[65%] md:basis-[60%] overflow-hidden">
         <div class="flex lg:flex-row flex-col-reverse gap-5">
-          <div class="basis-[10%] flex lg:flex-col flex-row gap-4">
+          <!-- <div class="basis-[10%] flex lg:flex-col flex-row gap-4">
             <div
               class="w-full h-auto rounded-lg overflow-hidden group cursor-pointer">
               <img
@@ -23,13 +23,13 @@
                 class="w-full h-full group-hover:scale-[1.1] transition-all"
                 src="https://cdn.prod.website-files.com/62f51a90d298e65b94bbffcd/62f697b6ea32fefb0084af2c_more-image-3-shop-product-shopwave-template.png" />
             </div>
-          </div>
+          </div> -->
           <div class="basis-[90%]">
             <div
               class="w-full h-auto cursor-pointer group rounded-xl overflow-hidden">
               <img
                 class="w-full h-full group-hover:scale-[1.1] transition-all duration-200"
-                src="https://cdn.prod.website-files.com/62f51a90d298e65b94bbffcd/62f697b6ea32fefb0084af2c_more-image-3-shop-product-shopwave-template.png" />
+                src="{{$product->product_img}}" />
             </div>
           </div>
         </div>
@@ -203,7 +203,7 @@
                 <div class="basis-[30%] h-auto rounded-xl overflow-hidden">
                   <img
                     class="w-full h-full group-hover:scale-[1.1] transition-all duration-200 object-cover"
-                    src="https://cdn.prod.website-files.com/62f51a90d298e65b94bbffcd/62f6a67c4666f047ada3ba87_image-10-shop-product-shopwave-template-p-500.png" />
+                    src="$relatedProduct->product_img" />
                 </div>
                 <div class="basis-[70%]">
                   <p
