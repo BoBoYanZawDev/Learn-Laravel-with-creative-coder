@@ -8,7 +8,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoleController;
 use App\Http\Middleware\mustBeAdmin;
 use App\Http\Middleware\MustBeLogin;
 use Illuminate\Support\Facades\Route;
@@ -52,4 +54,10 @@ Route::middleware(mustBeAdmin::class)
         Route::get('/orders','index')->name('admin.orders.index');
         Route::post('/orders/{order}/finish','markAsFinished')->name('admin.orders.finish');
         Route::post('/orders/{order}/cancel','markAsCanceled')->name('admin.orders.cancel');
+    });
+Route::middleware(mustBeAdmin::class)
+    ->prefix('/admin')
+    ->group(function (){
+        Route::resource('/permissions',PermissionController::class);
+        Route::resource('/roles',RoleController::class);
     });
